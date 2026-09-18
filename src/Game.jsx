@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 function Square({ value, onSqureClick }) {
   return (
     <button
@@ -14,7 +15,7 @@ function Board({ xIsNext, squares, onPlay }) {
   const winer = calculateWinner(squares);
   let status;
   if (winer) {
-    status = `Winner of the game is : ${winer} `;
+    status = `Winner of the game is : ${winer}`;
   } else {
     status = ` Next Player : ${xIsNext ? "X" : "O"}`;
   }
@@ -106,7 +107,7 @@ export default function Game() {
 
   return (
     <>
-      <div className="py-4 bg-gray-300 w-72 h-screen flex flex-col gap-5 items-center justify-center mx-auto">
+      <div className="py-4 bg-gray-300 w-72 min-h-96 flex flex-col gap-5 items-center mx-auto">
         {/* Board */}
         <div>
           <Board
