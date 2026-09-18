@@ -16,7 +16,7 @@ function Board({ xIsNext, squares, onPlay }) {
   const isDraw = !winer && squares.every((square) => square !== null);
   let status;
   if (winer) {
-    status = `Congratulations! ${winer} Wins ✅`;
+    status = `Congratulations! ${winer} is Winer ✅`;
   } else if (isDraw) {
     status = `Game is Draw! Play Again?`;
   } else {
@@ -38,8 +38,10 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="relative">
-        <div className="absolute w-auto flex justify-center items-center text-center">
-          {status}
+        <div className="absolute">
+          <div className="flex text-center items-center justify-center ">
+            {status}
+          </div>
         </div>
         <div className="pt-12">
           <div className="flex">
@@ -78,7 +80,7 @@ function Board({ xIsNext, squares, onPlay }) {
             </Square>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 }
@@ -116,7 +118,7 @@ export default function Game() {
 
   return (
     <>
-      <div className="lg:m-1 py-2 bg-gray-300 w-80 min-h-96 flex flex-col gap-2 items-center mx-auto">
+      <div className=" py-2 bg-gray-300 w-80 min-h-96 flex flex-col gap-2 items-center mx-auto">
         {/* Board */}
         <div>
           <Board
