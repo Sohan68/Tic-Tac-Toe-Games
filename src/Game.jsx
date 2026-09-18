@@ -15,7 +15,7 @@ function Board({ xIsNext, squares, onPlay }) {
   const winer = calculateWinner(squares);
   let status;
   if (winer) {
-    status = `Winner of the game is : ${winer}`;
+    status = `Winner of the game is: ${winer}`;
   } else {
     status = ` Next Player : ${xIsNext ? "X" : "O"}`;
   }
@@ -34,7 +34,7 @@ function Board({ xIsNext, squares, onPlay }) {
   }
   return (
     <>
-      <div>{status}</div>
+      <div className="flex justify-center ">{status}</div>
       <div className="flex">
         <Square value={squares[0]} onSqureClick={() => handleClick(0)}>
           {" "}
@@ -99,7 +99,7 @@ export default function Game() {
       description = ` Go to start the Game`;
     }
     return (
-      <li key={move}>
+      <li className="bg-gray-700 text-white p-1 mb-1 rounded-sm" key={move}>
         <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
@@ -107,7 +107,7 @@ export default function Game() {
 
   return (
     <>
-      <div className="py-4 bg-gray-300 w-72 min-h-96 flex flex-col gap-5 items-center mx-auto">
+      <div className="lg:m-1 py-2 bg-gray-300 w-80 min-h-96 flex flex-col gap-2 items-center mx-auto">
         {/* Board */}
         <div>
           <Board
@@ -117,7 +117,10 @@ export default function Game() {
           ></Board>
         </div>
         {/* history */}
-        <div>{moves}</div>
+        <div>
+          {" "}
+          <ol className="border border-gray-700 p-1 pb-0 "> {moves}</ol>{" "}
+        </div>
       </div>
     </>
   );
