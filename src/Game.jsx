@@ -13,11 +13,14 @@ function Square({ value, onSqureClick }) {
 
 function Board({ xIsNext, squares, onPlay }) {
   const winer = calculateWinner(squares);
+  const isDraw = !winer && squares.every((square) => square !== null);
   let status;
   if (winer) {
-    status = `Winner of the game is: ${winer}`;
+    status = `Congratulations! ${winer} Wins ✅`;
+  } else if (isDraw) {
+    status = `Game is Draw! Play Again?`;
   } else {
-    status = ` Next Player : ${xIsNext ? "X" : "O"}`;
+    status = `The Next Player is : ${xIsNext ? "X" : "O"}`;
   }
 
   function handleClick(i) {
@@ -34,42 +37,48 @@ function Board({ xIsNext, squares, onPlay }) {
   }
   return (
     <>
-      <div className="flex justify-center ">{status}</div>
-      <div className="flex">
-        <Square value={squares[0]} onSqureClick={() => handleClick(0)}>
-          {" "}
-        </Square>
-        <Square value={squares[1]} onSqureClick={() => handleClick(1)}>
-          {" "}
-        </Square>
-        <Square value={squares[2]} onSqureClick={() => handleClick(2)}>
-          {" "}
-        </Square>
-      </div>
+      <div className="relative">
+        <div className="absolute w-auto flex justify-center items-center text-center">
+          {status}
+        </div>
+        <div className="pt-12">
+          <div className="flex">
+            <Square value={squares[0]} onSqureClick={() => handleClick(0)}>
+              {" "}
+            </Square>
+            <Square value={squares[1]} onSqureClick={() => handleClick(1)}>
+              {" "}
+            </Square>
+            <Square value={squares[2]} onSqureClick={() => handleClick(2)}>
+              {" "}
+            </Square>
+          </div>
 
-      <div className="flex">
-        <Square value={squares[3]} onSqureClick={() => handleClick(3)}>
-          {" "}
-        </Square>
-        <Square value={squares[4]} onSqureClick={() => handleClick(4)}>
-          {" "}
-        </Square>
-        <Square value={squares[5]} onSqureClick={() => handleClick(5)}>
-          {" "}
-        </Square>
-      </div>
+          <div className="flex">
+            <Square value={squares[3]} onSqureClick={() => handleClick(3)}>
+              {" "}
+            </Square>
+            <Square value={squares[4]} onSqureClick={() => handleClick(4)}>
+              {" "}
+            </Square>
+            <Square value={squares[5]} onSqureClick={() => handleClick(5)}>
+              {" "}
+            </Square>
+          </div>
 
-      <div className="flex">
-        <Square value={squares[6]} onSqureClick={() => handleClick(6)}>
-          {" "}
-        </Square>
-        <Square value={squares[7]} onSqureClick={() => handleClick(7)}>
-          {" "}
-        </Square>
-        <Square value={squares[8]} onSqureClick={() => handleClick(8)}>
-          {" "}
-        </Square>
-      </div>
+          <div className="flex">
+            <Square value={squares[6]} onSqureClick={() => handleClick(6)}>
+              {" "}
+            </Square>
+            <Square value={squares[7]} onSqureClick={() => handleClick(7)}>
+              {" "}
+            </Square>
+            <Square value={squares[8]} onSqureClick={() => handleClick(8)}>
+              {" "}
+            </Square>
+          </div>
+        </div>
+      </div>{" "}
     </>
   );
 }
